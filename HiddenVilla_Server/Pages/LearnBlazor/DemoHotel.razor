@@ -5,10 +5,24 @@
     <h2 class="text-info">Room List [USING COMPONENT]</h2>
 
     <div class="row container">
+        <div class="col-12">
+            <h4 class="text-info">Hotel Room's'</h4>
+        </div>
 
         @foreach (var room in RoomsList)
         {
-            <IndividualRoom Room="@room"></IndividualRoom>       
+            <IndividualRoom Room="@room"></IndividualRoom>
+        }
+
+
+
+        <div class="col-12 mt-4">
+            <h4 class="text-info">Hotel Amenitie's[assignment]</h4>
+        </div>
+
+        @foreach (var amenity in AmenityList)
+        {
+            <AmenityRoom Amenity="@amenity"></AmenityRoom>
         }
     </div>
 
@@ -23,6 +37,7 @@
 @code{
 
     List<BlazorRoom> RoomsList = new List<BlazorRoom>();
+    List<BlazorAmenity> AmenityList = new List<BlazorAmenity>();
 
     protected override void OnInitialized()
     {
@@ -51,5 +66,25 @@
             new BlazorRoomProp{Id = 2,Name = "Occupancy", Value = "6"}
         }
         });
+        AmenityList.Add(new BlazorAmenity()
+        {
+            Id = 111,
+            AmenityName = "Gym",
+            Description = "24x7 gym room is available"
+        });
+        AmenityList.Add(new BlazorAmenity()
+        {
+            Id = 222,
+            AmenityName = "Swimming pool",
+            Description = "Pool room is open 6am to 10am"
+        });
+        AmenityList.Add(new BlazorAmenity()
+        {
+            Id = 333,
+            AmenityName = "Free Breakfast",
+            Description = "Enjoy free breakfast in out hotel"
+        });
+
     }
+
 }
