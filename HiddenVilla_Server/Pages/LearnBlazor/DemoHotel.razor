@@ -1,0 +1,55 @@
+﻿@page "/demohotel"
+
+<h3>Wef will display hotel rooms and aminitites here!</h3>
+<div class="border p-2 mt-2">
+    <h2 class="text-info">Room List [USING COMPONENT]</h2>
+
+    <div class="row container">
+
+        @foreach (var room in RoomsList)
+        {
+            <IndividualRoom Room="@room"></IndividualRoom>       
+        }
+    </div>
+
+</div>
+
+
+
+@*////////////////////////////////////////////////// **********     Code     ******** ////////////////////////////////////////////////////////*@
+
+
+
+@code{
+
+    List<BlazorRoom> RoomsList = new List<BlazorRoom>();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        RoomsList.Add(new BlazorRoom()
+        {
+            Id = 101,
+            RoomName = "King Suite",
+            IsActuve = true,
+            Price = 100,
+            RoomProps = new List<BlazorRoomProp>
+{
+            new BlazorRoomProp{Id = 1,Name = "Sq Ft", Value = "100"},
+            new BlazorRoomProp{Id = 2,Name = "Occupancy", Value = "3"}
+        }
+        });
+        RoomsList.Add(new BlazorRoom()
+        {
+            Id = 102,
+            RoomName = "Quin Suite",
+            IsActuve = true,
+            Price = 70,
+            RoomProps = new List<BlazorRoomProp>
+{
+            new BlazorRoomProp{Id = 1,Name = "Sq Ft", Value = "150"},
+            new BlazorRoomProp{Id = 2,Name = "Occupancy", Value = "6"}
+        }
+        });
+    }
+}
