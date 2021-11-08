@@ -1,0 +1,44 @@
+﻿
+<div>
+    <div class="alert alert-info">@Title</div>
+    <div class="alert alert-success">
+        @if (DangerChildContent == null)
+        {
+            @if (ChildContent == null)
+            {
+                <span>Hello , from Empty Render Fragment</span>
+            }
+            else
+            {
+                <span class="text-danger">@ChildContent</span>
+            }
+        }
+        else
+        {
+            <span class="text-danger">@DangerChildContent</span>
+        }
+    </div>
+    <button class="btn btn-danger" @onclick="OnClickButtonMethod">Button to be clicked!</button>
+
+    <GrandChildComponent></GrandChildComponent>
+</div>
+
+
+
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public RenderFragment DangerChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickButtonMethod { get; set; }
+
+    //[Parameter]
+    //public string MessageForGrandChild { get; set; }
+}

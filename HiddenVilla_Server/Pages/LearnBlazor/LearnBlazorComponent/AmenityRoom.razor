@@ -3,6 +3,7 @@
     <h4>Amenity - @Amenity.Id</h4>
     <p>@Amenity.AmenityName</p>
     <p>@Amenity.Description</p>
+     RF From Parent - @ChildContent1  @ChildContent2
 </div>
 
 
@@ -19,4 +20,12 @@
     {
         await OnAmenitySelection.InvokeAsync((string)name);
     }
+
+   
+
+    [Parameter]
+    public RenderFragment ChildContent1 { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent2 { get; set; }
 }
