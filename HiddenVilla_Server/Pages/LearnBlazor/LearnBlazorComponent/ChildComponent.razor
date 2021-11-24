@@ -1,4 +1,4 @@
-﻿
+﻿@inject IJSRuntime JsRuntime 
 <div>
     <div class="alert alert-info">@Title</div>
     <div class="alert alert-success">
@@ -39,6 +39,13 @@
     [Parameter]
     public EventCallback<MouseEventArgs> OnClickButtonMethod { get; set; }
 
-    //[Parameter]
-    //public string MessageForGrandChild { get; set; }
+    public async Task ShowToastrSuccess()
+    {
+        await JsRuntime.ToastrSuccess("Success !!!!!");
+    }
+    public async Task ShowToastrError()
+    {
+        await JsRuntime.ToastrError("Error !!!!!");
+    }
+
 }
