@@ -1,4 +1,6 @@
-﻿@page "/horel-room/create"
+﻿@page "/hotel-room/create"
+@page "/hotel-room/edit/{Id:int}"
+
 @inject IHotelRoomRepository HotelRoomRepository
 @inject NavigationManager NavigationManager
 
@@ -10,7 +12,6 @@
             <div class="card-body">
                 <EditForm Model="HotelRoomModel" OnValidSubmit="HandleHotelRoomUpsert">
                     <DataAnnotationsValidator />
-                    @* <ValidationSummary/>*@
                     <div class="form-group">
                         <label>Name</label>
                         <InputText @bind-Value="HotelRoomModel.Name" class="form-control"></InputText>
@@ -45,8 +46,28 @@
 </div>
 
 @code {
+
+    [Parameter]
+    public int? Id { get; set; }
+
     private HotelRoomDTO HotelRoomModel { get; set; } = new HotelRoomDTO();
     private string Title { get; set; } = "Create";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != null)
+        {
+            //updating
+            Title = "Update";
+            HotelRoomModel = await HotelRoomRepository.GetHotelRoom(Id.Value);
+
+        }
+        else
+        {
+            //create
+            HotelRoomModel = new HotelRoomDTO();
+        }
+    }
 
     private async Task HandleHotelRoomUpsert()
     {

@@ -9,7 +9,6 @@ namespace Models
 {
     public class HotelRoomDTO
     {
-       
         public int Id { get; set; }
         [Required(ErrorMessage ="Please enter room name")]
         public string Name { get; set; }

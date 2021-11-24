@@ -7,7 +7,7 @@
         <h4 class="card-title text-info">Hotel Room</h4>
     </div>
     <div class="col-3 offset-1">
-        <NavLink href="horel-room/create" class="btn btn-info form-control">Add New Room</NavLink>
+        <NavLink href="hotel-room/create" class="btn btn-info form-control">Add New Room</NavLink>
     </div>
 </div>
 
@@ -21,6 +21,7 @@
                     <th>Rate</th>
                     <th>Sqft</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -33,8 +34,12 @@
                     <td>@room.Occupancy</td>
                     <td>@room.RegularRate.ToString("c")</td>
                     <td>@room.SqFt</td>
-                    @*<td><button @onclick="()=>DeleteHotelRoom(room.Id)">Delete</button></td>*@
-                    <td><button @onclick="()=>HotelRoomRepository.DeleteHotelRoom(room.Id)">Delete</button></td>
+                    <td>
+                        <NavLink href="@($"hotel-room/edit/{room.Id}")" class="btn btn-primary">Edit</NavLink>
+                    </td>
+                    <td>
+                        <button @onclick="()=>HotelRoomRepository.DeleteHotelRoom(room.Id)">Delete</button>
+                    </td>
                 </tr>
 
                     }
@@ -61,21 +66,4 @@
     }
 
 
-
-
-    //var hotelRoom = HotelRoomRepository.DeleteHotelRoom(Hotel)
-
-
-    //private void DeleteHotelRoom(int IdRoom)
-    //{
-    //    foreach(var room in HotelRooms)
-    //    {
-    //        if(room.Id == IdRoom)
-    //        {
-    //            var hotelRoom = HotelRoomRepository.DeleteHotelRoom(IdRoom);
-
-    //        }
-
-    //    }
-    //}
 }
